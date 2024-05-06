@@ -47,7 +47,7 @@ COPY --from=builder /output/ /
 WORKDIR '/config/resources/[custom]'
 
 # Bob74 Map Fixes
-RUN wget https://github.com/Bob74/bob74_ipl/archive/refs/tags/2.2.1.zip -o bob74.zip
+RUN wget https://github.com/Bob74/bob74_ipl/archive/refs/tags/2.2.1.zip -O bob74.zip
 RUN unzip bob74.zip -d bob74_ipl && rm bob74.zip
 
 # Custom Resource
