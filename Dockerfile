@@ -1,9 +1,11 @@
 ARG FIVEM_NUM=8085
+ARG BOB74_VER=2.2.1
 ARG FIVEM_VER=8085-4695ec7001ea2009675e5a7582928d6bbc6e9d77
 ARG DATA_VER=0e7ba538339f7c1c26d0e689aa750a336576cf02
 
 FROM spritsail/alpine:3.19 as builder
 
+ARG BOB74_VER
 ARG FIVEM_VER
 ARG DATA_VER
 
@@ -25,8 +27,9 @@ ADD entrypoint usr/bin/entrypoint
 WORKDIR "/output/opt/cfx-server-data/resources/[custom]"
 
 # Bob74 Map Fixes
-RUN wget https://github.com/Bob74/bob74_ipl/archive/refs/tags/2.2.1.zip -O bob74.zip
+RUN wget https://github.com/Bob74/bob74_ipl/archive/refs/tags/${BOB74_VER}.zip -O bob74.zip
 RUN unzip bob74.zip -d . && rm bob74.zip
+RUN mv bob74_ipl-${BOB74_VER} bob74_ipl
 
 # Custom Resource
 RUN wget https://github.com/fivem-dx-plus/dxp-ts-resources/releases/download/release/release.zip
