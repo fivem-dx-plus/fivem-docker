@@ -22,6 +22,16 @@ RUN wget -O- https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/
 ADD server.cfg opt/cfx-server-data
 ADD entrypoint usr/bin/entrypoint
 
+WORKDIR "/output/opt/cfx-server-data/resources/[custom]"
+
+# Bob74 Map Fixes
+RUN wget https://github.com/Bob74/bob74_ipl/archive/refs/tags/2.2.1.zip -O bob74.zip
+RUN unzip bob74.zip -d . && rm bob74.zip
+
+# Custom Resource
+RUN wget https://github.com/fivem-dx-plus/dxp-ts-resources/releases/download/release/release.zip
+RUN unzip release.zip -d dxp-ts-resources && rm release.zip
+
 RUN chmod +x /output/usr/bin/entrypoint
 
 #================
@@ -42,17 +52,6 @@ LABEL maintainer="Spritsail <fivem@spritsail.io>" \
       io.spritsail.version.fivem_data=${DATA_VER}
 
 COPY --from=builder /output/ /
-
-# Custom Resources
-WORKDIR '/config/resources/[custom]'
-
-# Bob74 Map Fixes
-RUN wget https://github.com/Bob74/bob74_ipl/archive/refs/tags/2.2.1.zip -O bob74.zip
-RUN unzip bob74.zip -d bob74_ipl && rm bob74.zip
-
-# Custom Resource
-RUN wget https://github.com/fivem-dx-plus/dxp-ts-resources/releases/download/release/release.zip
-RUN unzip release.zip -d dxp-ts-resources && rm release.zip
 
 WORKDIR /config
 EXPOSE 30120
