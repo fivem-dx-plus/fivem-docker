@@ -56,10 +56,6 @@ LABEL maintainer="Spritsail <fivem@spritsail.io>" \
 
 COPY --from=builder /output/ /
 
-# Install NPM/Yarn Locally
-# RUN apk add --update nodejs npm
-# RUN npm install --global yarn
-
 WORKDIR /config
 EXPOSE 30120
 
