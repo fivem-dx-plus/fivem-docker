@@ -1,6 +1,6 @@
-ARG FIVEM_NUM=8085
+ARG FIVEM_NUM=7290
 ARG BOB74_VER=2.2.1
-ARG FIVEM_VER=8085-4695ec7001ea2009675e5a7582928d6bbc6e9d77
+ARG FIVEM_VER=7290-a654bcc2adfa27c4e020fc915a1a6343c3b4f921
 ARG DATA_VER=0e7ba538339f7c1c26d0e689aa750a336576cf02
 
 FROM spritsail/alpine:3.19 as builder
@@ -57,8 +57,8 @@ LABEL maintainer="Spritsail <fivem@spritsail.io>" \
 COPY --from=builder /output/ /
 
 # Install NPM/Yarn Locally
-RUN apk add --update nodejs npm
-RUN npm install --global yarn
+# RUN apk add --update nodejs npm
+# RUN npm install --global yarn
 
 WORKDIR /config
 EXPOSE 30120
