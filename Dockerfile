@@ -46,13 +46,13 @@ COPY --from=builder /output/ /
 # Custom Resources
 WORKDIR '/config/resources/[custom]'
 
-# Map Fixes
-RUN git clone https://github.com/Bob74/bob74_ipl
+# Bob74 Map Fixes
+RUN wget https://github.com/Bob74/bob74_ipl/archive/refs/tags/2.2.1.zip -o bob74.zip && \ 
+    unzip bob74.zip -d bob74_ipl && rm bob74.zip
 
 # Custom Resource
-RUN wget https://github.com/fivem-dx-plus/dxp-ts-resources/releases/download/release/release.zip
-RUN unzip release.zip -d dxp-ts-resources
-RUN rm release.zip
+RUN wget https://github.com/fivem-dx-plus/dxp-ts-resources/releases/download/release/release.zip && \
+    unzip release.zip -d dxp-ts-resources && rm release.zip
 
 WORKDIR /config
 EXPOSE 30120
