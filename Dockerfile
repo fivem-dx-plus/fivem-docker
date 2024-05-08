@@ -35,6 +35,18 @@ RUN mv bob74_ipl-${BOB74_VER} bob74_ipl
 RUN wget https://github.com/fivem-dx-plus/dxp-ts-resources/releases/download/release/release.zip
 RUN unzip release.zip -d dxp-ts-resources && rm release.zip
 
+# Install NPM/Yarn
+RUN apk add --update nodejs npm
+RUN npm install --global yarn
+
+# Setup Chat Resource
+WORKDIR "/output/opt/cfx-server-data/resources/[gameplay]/chat"
+RUN yarn install
+
+# Setup DXP-TS Resource
+WORKDIR "/output/opt/cfx-server-data/resources/[custom]/dxp-ts-resources"
+RUN yarn install && yarn prisma generate
+
 RUN chmod +x /output/usr/bin/entrypoint
 
 #================
