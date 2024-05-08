@@ -3,7 +3,7 @@ ARG BOB74_VER=2.2.1
 ARG FIVEM_VER=7290-a654bcc2adfa27c4e020fc915a1a6343c3b4f921
 ARG DATA_VER=0e7ba538339f7c1c26d0e689aa750a336576cf02
 
-FROM spritsail/alpine:3.19 as builder
+FROM node:16-alpine3.16 as builder
 
 ARG BOB74_VER
 ARG FIVEM_VER
@@ -34,10 +34,6 @@ RUN mv bob74_ipl-${BOB74_VER} bob74_ipl
 # Custom Resource
 RUN wget https://github.com/fivem-dx-plus/dxp-ts-resources/releases/download/release/release.zip
 RUN unzip release.zip -d dxp-ts-resources && rm release.zip
-
-# Install NPM/Yarn
-RUN apk add --update nodejs npm
-RUN npm install --global yarn
 
 # Setup Chat Resource
 WORKDIR "/output/opt/cfx-server-data/resources/[gameplay]/chat"
