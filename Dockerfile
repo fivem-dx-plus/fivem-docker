@@ -41,7 +41,9 @@ RUN yarn install
 
 # Setup DXP-TS Resource
 WORKDIR "/output/opt/cfx-server-data/resources/[custom]/dxp-ts-resources"
-RUN yarn install && yarn prisma generate
+RUN yarn install
+
+# && yarn prisma generate
 
 RUN chmod +x /output/usr/bin/entrypoint
 
