@@ -35,13 +35,23 @@ RUN mv bob74_ipl-${BOB74_VER} bob74_ipl
 RUN wget https://github.com/fivem-dx-plus/dxp-ts-resources/releases/download/release/release.zip
 RUN unzip release.zip -d dxp-ts-resources && rm release.zip
 
+# Setup Webpack Resource
+# Install, and mark as configured by package manager
+WORKDIR "/output/opt/cfx-server-data/resources/[system]/[builders]/webpack"
+RUN yarn install
+RUN touch .yarn.installed
+
 # Setup Chat Resource
+# Install, and mark as configured by package manager
 WORKDIR "/output/opt/cfx-server-data/resources/[gameplay]/chat"
 RUN yarn install
+RUN touch .yarn.installed
 
 # Setup DXP-TS Resource
+# Install, and mark as configured by package manager
 WORKDIR "/output/opt/cfx-server-data/resources/[custom]/dxp-ts-resources"
 RUN yarn install
+RUN touch .yarn.installed
 
 # && yarn prisma generate
 
