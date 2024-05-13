@@ -32,8 +32,7 @@ RUN unzip bob74.zip -d . && rm bob74.zip
 RUN mv bob74_ipl-${BOB74_VER} bob74_ipl
 
 # Custom Resource
-RUN wget https://github.com/fivem-dx-plus/dxp-ts-resources/releases/download/release/release.zip
-RUN unzip release.zip -d dxp-ts-resources && rm release.zip
+COPY dxp-ts-resources .
 
 # Setup Webpack Resource
 # Install, and mark as configured by package manager
@@ -51,6 +50,7 @@ RUN touch .yarn.installed
 # Install, and mark as configured by package manager
 WORKDIR "/output/opt/cfx-server-data/resources/[custom]/dxp-ts-resources"
 RUN yarn install
+RUN yarn build
 RUN touch .yarn.installed
 
 # && yarn prisma generate

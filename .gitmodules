@@ -1,0 +1,3 @@
+[submodule "dxp-ts-resources"]
+	path = dxp-ts-resources
+	url = https://github.com/fivem-dx-plus/dxp-ts-resources
