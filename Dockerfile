@@ -32,7 +32,7 @@ RUN unzip bob74.zip -d . && rm bob74.zip
 RUN mv bob74_ipl-${BOB74_VER} bob74_ipl
 
 # Custom Resource
-COPY dxp-ts-resources .
+COPY dxp-ts-resources dxp-ts-resources
 
 # Setup Webpack Resource
 # Install, and mark as configured by package manager
