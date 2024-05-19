@@ -50,7 +50,7 @@ RUN touch .yarn.installed
 # Install, and mark as configured by package manager
 WORKDIR "/output/opt/cfx-server-data/resources/[custom]/dxp-ts-resources"
 RUN yarn install
-RUN yarn prisma generate
+RUN yarn build
 RUN touch .yarn.installed
 
 # && yarn prisma generate
