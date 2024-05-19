@@ -59,7 +59,8 @@ RUN chmod +x /output/usr/bin/entrypoint
 
 #================
 
-FROM scratch
+# FROM scratch
+FROM alpine:3.16
 
 ARG FIVEM_VER
 ARG FIVEM_NUM
