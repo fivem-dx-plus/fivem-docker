@@ -5,6 +5,11 @@ ARG DATA_VER=0e7ba538339f7c1c26d0e689aa750a336576cf02
 
 FROM node:16-alpine3.16
 
+ARG FIVEM_NUM
+ARG BOB74_VER
+ARG FIVEM_VER
+ARG DATA_VER
+
 WORKDIR /
 
 RUN wget -O- https://runtime.fivem.net/artifacts/fivem/build_proot_linux/master/${FIVEM_VER}/fx.tar.xz \
